@@ -32,7 +32,10 @@ export default function App() {
         <p>
           <span>Prev </span>
           {pages.map((page) => (
-            <span key={page}>{`${page} | `}</span>
+            <span
+              key={page}
+              onClick={() => setCurrentPage(page)}
+            >{`${page} | `}</span>
           ))}
           <span> Next</span>
         </p>
