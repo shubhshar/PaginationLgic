@@ -18,7 +18,12 @@ export default function App() {
   const indexofFirstTodo = indexOfLastTodo - todosPerPage; // if currentPage = 3 => 30-10=20;
   //hence, 20->30 todos will be displayed
   const visibleTodos = todos.slice(indexofFirstTodo, indexOfLastTodo);
-
+  const prevHandler = () => {
+    setCurrentPage(currentPage - 1);
+  };
+  const nextHandler = () => {
+    setCurrentPage(currentPage + 1);
+  };
   return (
     <div className="App">
       <h2>Pagination example</h2>
@@ -30,14 +35,14 @@ export default function App() {
         ))}
 
         <p>
-          <span>Prev </span>
+          <span onClick={prevHandler}>Prev </span>
           {pages.map((page) => (
             <span
               key={page}
               onClick={() => setCurrentPage(page)}
             >{`${page} | `}</span>
           ))}
-          <span> Next</span>
+          <span onClick={nextHandler}> Next</span>
         </p>
       </div>
     </div>
