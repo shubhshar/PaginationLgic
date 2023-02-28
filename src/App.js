@@ -19,32 +19,48 @@ export default function App() {
   //hence, 20->30 todos will be displayed
   const visibleTodos = todos.slice(indexofFirstTodo, indexOfLastTodo);
   const prevHandler = () => {
-    setCurrentPage(currentPage - 1);
+    if (currentPage !== 1) {
+      setCurrentPage(currentPage - 1);
+    }
   };
   const nextHandler = () => {
-    setCurrentPage(currentPage + 1);
+    if (currentPage !== numOfTotalPages) {
+      setCurrentPage(currentPage + 1);
+    }
   };
   return (
-    <div className="App">
-      <h2>Pagination example</h2>
-      <div>
-        {visibleTodos.map((todo) => (
-          <p key={todo.id}>
-            ID no.{todo.userId}. {todo.title}
-          </p>
-        ))}
-
-        <p>
-          <span onClick={prevHandler}>Prev </span>
-          {pages.map((page) => (
-            <span
-              key={page}
-              onClick={() => setCurrentPage(page)}
-            >{`${page} | `}</span>
+    <>
+      <div className="App">
+        <h2>Pagination example</h2>
+        <div className="dropD">
+          <p>Select number of items to display</p>
+          <select onChange={(e) => setTodosPerPage(e.target.value)}>
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="30">30</option>
+            <option value="40">40</option>
+          </select>
+        </div>
+        <div>
+          {visibleTodos.map((todo) => (
+            <p key={todo.id}>
+              ID no.{todo.userId}. {todo.title}
+            </p>
           ))}
-          <span onClick={nextHandler}> Next</span>
-        </p>
+
+          <p>
+            <span onClick={prevHandler}>Prev </span>
+            {pages.map((page) => (
+              <span
+                key={page}
+                onClick={() => setCurrentPage(page)}
+                className={`${currentPage === page ? "active" : ""}`}
+              >{`${page}  `}</span>
+            ))}
+            <span onClick={nextHandler}> Next</span>
+          </p>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

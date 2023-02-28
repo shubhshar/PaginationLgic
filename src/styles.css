@@ -2,3 +2,12 @@
   font-family: sans-serif;
   text-align: center;
 }
+.active {
+  color: brown;
+  font-size: 25px;
+}
+.dropD {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
