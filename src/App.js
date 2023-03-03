@@ -54,7 +54,7 @@ export default function App() {
               <span
                 key={page}
                 onClick={() => setCurrentPage(page)}
-                className={`${currentPage === page ? "active" : ""}`}
+                className={`${currentPage === page ? "active" : ""}`} //so that css can be applied
               >{`${page}  `}</span>
             ))}
             <span onClick={nextHandler}> Next</span>
