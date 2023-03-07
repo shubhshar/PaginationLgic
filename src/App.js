@@ -14,8 +14,8 @@ export default function App() {
 
   const numOfTotalPages = Math.ceil(todos.length / todosPerPage);
   const pages = [...Array(numOfTotalPages + 1).keys()].slice(1);
-  const indexOfLastTodo = currentPage * todosPerPage; //if currentPage = 3 => 3*10=30
-  const indexofFirstTodo = indexOfLastTodo - todosPerPage; // if currentPage = 3 => 30-10=20;
+  const indexOfLastTodo = currentPage * todosPerPage; //if currentPage = 3 then => 3*10=30
+  const indexofFirstTodo = indexOfLastTodo - todosPerPage; // if currentPage = 3 then => 30-10=20;
   //hence, 20->30 todos will be displayed
   const visibleTodos = todos.slice(indexofFirstTodo, indexOfLastTodo);
   const prevHandler = () => {
@@ -39,6 +39,7 @@ export default function App() {
             <option value="20">20</option>
             <option value="30">30</option>
             <option value="40">40</option>
+             <option value="50">50</option>
           </select>
         </div>
         <div>
